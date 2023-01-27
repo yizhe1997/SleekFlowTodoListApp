@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListClient", "SleekFlowTodoListClient\SleekFlowTodoListClient.csproj", "{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListAPI", "SleekFlowTodoListAPI\SleekFlowTodoListAPI.csproj", "{43EE2CCB-A084-4648-8853-39270CC79450}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{43EE2CCB-A084-4648-8853-39270CC79450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{43EE2CCB-A084-4648-8853-39270CC79450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{43EE2CCB-A084-4648-8853-39270CC79450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{43EE2CCB-A084-4648-8853-39270CC79450}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0214885D-F4E8-49BB-95ED-47210EA41224}
+	EndGlobalSection
+EndGlobal
