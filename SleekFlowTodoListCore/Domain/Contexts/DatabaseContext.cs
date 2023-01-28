@@ -158,7 +158,7 @@ namespace SleekFlowTodoListCore.Domain.Contexts
 
         #endregion
 
-        #region Data Entry Transaction Handling
+        #region Data Entry Transaction Handling/ Pipeline Behaviour
 
         public void BeginTransaction()
         {

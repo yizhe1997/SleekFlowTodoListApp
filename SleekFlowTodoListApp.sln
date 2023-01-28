@@ -5,9 +5,9 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListClient", "SleekFlowTodoListClient\SleekFlowTodoListClient.csproj", "{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListAPI", "SleekFlowTodoListAPI\SleekFlowTodoListAPI.csproj", "{43EE2CCB-A084-4648-8853-39270CC79450}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListCore", "SleekFlowTodoListCore\SleekFlowTodoListCore.csproj", "{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SleekFlowTodoListAPI", "SleekFlowTodoListAPI\SleekFlowTodoListAPI.csproj", "{42E18D52-A126-451C-8639-6BF163948480}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E068FCB-CAE6-4C96-8DDD-5056B7ECA94C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{43EE2CCB-A084-4648-8853-39270CC79450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{43EE2CCB-A084-4648-8853-39270CC79450}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{43EE2CCB-A084-4648-8853-39270CC79450}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{43EE2CCB-A084-4648-8853-39270CC79450}.Release|Any CPU.Build.0 = Release|Any CPU
 		{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42E18D52-A126-451C-8639-6BF163948480}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42E18D52-A126-451C-8639-6BF163948480}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42E18D52-A126-451C-8639-6BF163948480}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42E18D52-A126-451C-8639-6BF163948480}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
