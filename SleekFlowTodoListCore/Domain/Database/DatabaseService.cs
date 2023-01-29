@@ -2,9 +2,7 @@
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SleekFlowTodoListCore.Domain.Contexts;
-using SleekFlowTodoListCore.Domain.Database.Todos;
 using SleekFlowTodoListCore.Domain.Database.Users;
-using SleekFlowTodoListCore.Extensions;
 using System.Web.Helpers;
 
 namespace SleekFlowTodoListCore.Domain.Database

@@ -19,6 +19,7 @@ using Microsoft.AspNetCore.Rewrite;
 using Serilog;
 using SleekFlowTodoListCore.Error;
 using SleekFlowTodoListAPI.Infrastructure.Mvc;
+using SleekFlowTodoListCore.Domain.EFCORE;
 
 var builder = WebApplication.CreateBuilder(args);
 var configuration = builder.Configuration;
@@ -64,23 +65,18 @@ builder.Services.AddMediatR(AppDomain.CurrentDomain.GetAssemblies().Where(assemb
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies().Where(assembly => !assembly.FullName.StartsWith("Microsoft.VisualStudio.TraceDataCollector", StringComparison.Ordinal)));
 
 // EFCore
-var conn = configuration.GetConnectionString("Primary");
-builder.Services.AddDbContext<DatabaseContext>(options =>
-{
-    options.UseSqlServer(conn);
-    options.EnableSensitiveDataLogging(true);
-});
+builder.Services.AddEFCore(configuration);
+
+// Prereq for Iidentity... and to use usermanager
+builder.Services.AddIdentity<User, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddEntityFrameworkStores<DatabaseContext>()
+    .AddDefaultTokenProviders();
 
 // Seeding Db
 builder.Services.AddDatabaseService(configuration);
 
 // Current Context
 builder.Services.AddTransient<CurrentContext>();
-
-// Prereq for Iidentity... and to use usermanager
-builder.Services.AddIdentity<User, IdentityRole<Guid>>()
-    .AddEntityFrameworkStores<DatabaseContext>()
-    .AddDefaultTokenProviders();
 
 // Jwt            
 builder.Services.AddJwt(configuration);

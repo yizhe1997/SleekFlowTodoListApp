@@ -1,6 +1,4 @@
-﻿using SleekFlowTodoListCore.Domain.Database.Todos;
-
-namespace SleekFlowTodoListCore.Extensions
+﻿namespace SleekFlowTodoListCore.Extensions
 {
     public static class TypeExtension
     {
