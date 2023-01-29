@@ -9,5 +9,6 @@ namespace SleekFlowTodoListAPI.Controllers.Users
 		public bool Admin { get; set; } = false;
 		public Guid AzureAdB2CTokenSubClaim { get; set; }
 		public DateTime? LastLoggedIn { get; set; }
+		public string? AuthToken { get; set; }
 	}
 }

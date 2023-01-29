@@ -2,6 +2,8 @@
 using MediatR;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr;
 using SleekFlowTodoListCore.Domain.Contexts;
+using SleekFlowTodoListCore.Error;
+using System.Net;
 
 namespace SleekFlowTodoListAPI.Controllers.Users
 {
@@ -24,6 +26,9 @@ namespace SleekFlowTodoListAPI.Controllers.Users
 			public override async Task<Model> Handle(Request request, CancellationToken cancellationToken)
 			{
 				var user = await Database.GetUserFromDb(request.Id);
+
+				if (CurrentContext.CurrentUserId != user.Id || CurrentContext.CurrentUser?.Admin != true)
+					throw new RestException(HttpStatusCode.NotFound, "Insufficient privilege to view user detail.")
 
 				return Mapper.Map<Model>(user);
 			}

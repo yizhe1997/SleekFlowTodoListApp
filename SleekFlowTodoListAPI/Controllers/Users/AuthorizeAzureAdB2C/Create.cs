@@ -24,9 +24,8 @@ namespace SleekFlowTodoListAPI.Controllers.Users.AuthorizeAzureAdB2C
             }
         }
 
-        public class Model
-        {
-            public string? AuthToken { get; set; }
+        public class Model : AuthorizeAzureAdB2CViewModel
+		{
         }
 
         public class RequestHandler : BaseRequestHandler<Request, Model>

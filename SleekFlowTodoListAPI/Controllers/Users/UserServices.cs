@@ -14,7 +14,8 @@ namespace SleekFlowTodoListAPI.Controllers.Users
         public static async Task<User> GetUserFromDb(this DatabaseContext dbContext, Guid todoId)
         {
             var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Id == todoId);
-            if (user == null) throw new RestException(HttpStatusCode.NotFound, "User not found.");
+            if (user == null) 
+                throw new RestException(HttpStatusCode.NotFound, "User not found.");
 
             return user;
         }
