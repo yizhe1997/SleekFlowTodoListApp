@@ -33,7 +33,7 @@ namespace SleekFlowTodoListAPI.Controllers.Users.AuthorizeAzureAdB2C
             public override async Task<Model> Handle(Request request, CancellationToken cancellationToken)
             {
                 // Check if current user AzureAdB2CTokenSubClaim is empty Guid. If no forbid this method of authorization.
-				if (CurrentContext.CurrentUser.AzureAdB2CTokenSubClaim == Guid.Empty)
+				if (CurrentContext.CurrentUser.AzureAdB2CTokenSubClaim == Guid.Empty || CurrentContext.CurrentUser.AzureAdB2CTokenSubClaim != request.AzureAdB2CTokenSubClaim)
 					throw new RestException(HttpStatusCode.NotFound, "User not registered for Azure AD B2C authorization. Please authorize conventionally.");
 
 				// Create claims for user
