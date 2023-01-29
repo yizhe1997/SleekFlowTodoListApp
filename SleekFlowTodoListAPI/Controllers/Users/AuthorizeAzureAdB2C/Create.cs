@@ -5,6 +5,8 @@ using SleekFlowTodoListAPI.Controllers.Users.Authorize;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr;
 using SleekFlowTodoListAPI.Infrastructure.Security.Jwt;
 using SleekFlowTodoListCore.Domain.Contexts;
+using SleekFlowTodoListCore.Error;
+using System.Net;
 
 namespace SleekFlowTodoListAPI.Controllers.Users.AuthorizeAzureAdB2C
 {
@@ -12,16 +14,7 @@ namespace SleekFlowTodoListAPI.Controllers.Users.AuthorizeAzureAdB2C
     {
         public class Request : IRequest<Model>
         {
-            public Guid DealerId { get; set; }
             public Guid AzureAdB2CTokenSubClaim { get; set; }
-        }
-
-        public class Validator : AbstractValidator<Request>
-        {
-            public Validator()
-            {
-                RuleFor(x => x.DealerId).NotNull().NotEmpty();
-            }
         }
 
         public class Model : AuthorizeAzureAdB2CViewModel
@@ -39,8 +32,12 @@ namespace SleekFlowTodoListAPI.Controllers.Users.AuthorizeAzureAdB2C
 
             public override async Task<Model> Handle(Request request, CancellationToken cancellationToken)
             {
-                // Create claims for user
-                var claims = CurrentContext.CurrentUser.CreateClaimsForUser(Database, CurrentContext);
+                // Check if current user AzureAdB2CTokenSubClaim is empty Guid. If no forbid this method of authorization.
+				if (CurrentContext.CurrentUser.AzureAdB2CTokenSubClaim == Guid.Empty)
+					throw new RestException(HttpStatusCode.NotFound, "User not registered for Azure AD B2C authorization. Please authorize conventionally.");
+
+				// Create claims for user
+				var claims = CurrentContext.CurrentUser.CreateClaimsForUser(Database, CurrentContext);
 
                 // Create authorization token
                 var token = await JwtTokenGenerator.CreateToken(CurrentContext.CurrentUserId.ToString() ?? string.Empty, claims);

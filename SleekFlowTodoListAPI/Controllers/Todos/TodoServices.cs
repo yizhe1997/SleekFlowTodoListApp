@@ -14,7 +14,8 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
         public static async Task<Todo> GetTodoForCurrentUserContext(this CurrentContext currentContext, Guid todoId)
         {
             var todo = await currentContext.Todos.FirstOrDefaultAsync(dr => dr.Id == todoId);
-            if (todo == null) throw new RestException(HttpStatusCode.NotFound, "Todo not found.");
+            if (todo == null) 
+                throw new RestException(HttpStatusCode.NotFound, "Todo not found.");
 
             return todo;
         }
