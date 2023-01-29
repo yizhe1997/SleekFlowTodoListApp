@@ -102,7 +102,7 @@ namespace SleekFlowTodoListCore.Domain.Database
 
                 foreach (var user in users)
                 {
-					var result = _userManager.CreateAsync(user, _options.AdminPassword).Result;
+					var result = _userManager.CreateAsync(user, _options.DefaultPassword).Result;
 
 					if (result.Succeeded)
 					{
