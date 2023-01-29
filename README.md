@@ -17,6 +17,7 @@ For local developer environment
 - Visual Studio 2022 and the necessary .Net SDKs
 - Docker
 - SQL server
+- Postman
 
 ## How to get started Backend Web App(Local)
 
@@ -34,9 +35,12 @@ For local developer environment
 1. If hosting locally user can choose to fill in the appsettings.json or use the user secrets by left clicking the SleekFlowTodoListCore.csproj and select "Manage User Secrets".
 2. Create a new SQL Server instance for your local environment.
 3. Go through the [README.md](https://github.com/yizhe1997/SleekFlowTodoListApp/blob/master/SleekFlowTodoListAPI/README.md) to understand the purpose of each configuration options. There are empty templates in the README.md readily available for use.
-4.Run the application.
-
-    The first time you run the application, it will seed both databases with data such that you should see products in the store, and you should be able to log in using the demouser@microsoft.com account.
+4. Clean and Rebuild the project. 
+5. Select SleekFlowTodoListAPI as the startup project.
+![image](https://user-images.githubusercontent.com/81303202/215347856-5f12d718-2f0b-42e5-a79e-d3a41fbbbb6b.png)
+6. Run the application.The first time you run the application, it will seed the AspNetUsers table in your database with an admin user and a dummy user.
+7. You should be able to make requests to localhost:7149 (please change the port if necessary [in](https://github.com/yizhe1997/SleekFlowTodoListApp/blob/master/SleekFlowTodoListAPI/Properties/launchSettings.json)) for the Backend API project once the swagger UI appears. If you have any problems, especially with viewing the swagger UI or security issues, try using a different browser and [trusting the local development cert](https://go.microsoft.com/fwlink/?linkid=848054).
+8. , and you should be able to log in using either emails.
     
 ## How to host on Azure
  - WORK IN PROGRESS
@@ -48,4 +52,5 @@ For local developer environment
  -  In depth documentation of code
  -  Unit testing
  -  Technical design review
+ -  SleekFlowTodoListAPI.csproj startup logging missing information
 
