@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using FluentValidation;
 using MediatR;
 using SleekFlowTodoListAPI.Controllers.Users.Authorize;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr;

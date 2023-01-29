@@ -27,7 +27,7 @@ namespace SleekFlowTodoListAPI.Controllers.Users
 			{
 				var user = await Database.GetUserFromDb(request.Id);
 
-				if (CurrentContext.CurrentUserId != user.Id || CurrentContext.CurrentUser?.Admin != true)
+				if (CurrentContext.CurrentUserId != user.Id && CurrentContext.CurrentUser?.Admin != true)
 					throw new RestException(HttpStatusCode.NotFound, "Insufficient privilege to view user detail.");
 
 				return Mapper.Map<Model>(user);
