@@ -2,6 +2,8 @@
 using MediatR;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr;
 using SleekFlowTodoListCore.Domain.Contexts;
+using SleekFlowTodoListCore.Error;
+using System.Net;
 
 namespace SleekFlowTodoListAPI.Controllers.Users
 {
@@ -22,6 +24,10 @@ namespace SleekFlowTodoListAPI.Controllers.Users
 			public override async Task<Model> Handle(Request request, CancellationToken cancellationToken)
 			{
 				var user = await Database.GetUserFromDb(request.Id);
+
+				// Forbid deletion of admin user
+				if (user.Admin == true)
+					throw new RestException(HttpStatusCode.NotFound, "Admin user not allowed for deletion.");
 
 				// Remove from users table if record exit
 				Database.Users.Remove(user);
