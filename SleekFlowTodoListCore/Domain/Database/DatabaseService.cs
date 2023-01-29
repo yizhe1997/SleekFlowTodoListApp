@@ -99,10 +99,21 @@ namespace SleekFlowTodoListCore.Domain.Database
 						Admin = false
 					}
 				};
-				_dbContext.Users.AddRange(users);
-			}
 
-			_dbContext.SaveChanges();
+                foreach (var user in users)
+                {
+					var result = _userManager.CreateAsync(user, _options.AdminPassword).Result;
+
+					if (result.Succeeded)
+					{
+						_logger.LogInformation($"User with {user.Email} created successfully.");
+					}
+					else
+					{
+						_logger.LogError("Failed to create user with email {0}: {1}", user.Email, result.Errors.ToString());
+					}
+				}
+			}
 		}
 
 		#endregion
