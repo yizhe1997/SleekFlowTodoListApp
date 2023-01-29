@@ -26,7 +26,7 @@ namespace SleekFlowTodoListAPI.Controllers.Users
 		{
 			var todoDetail = await _mediator.Send(request);
 
-			return CreatedAtAction(nameof(GetTodo), new { id = todoDetail.Id }, todoDetail);
+			return CreatedAtAction(nameof(GetUser), new { id = todoDetail.Id }, todoDetail);
 		}
 
 		[HttpPut("{id}")]
