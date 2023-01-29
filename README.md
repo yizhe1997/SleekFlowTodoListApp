@@ -16,15 +16,36 @@ For local developer environment
 
 - Visual Studio 2022 and the necessary .Net SDKs
 - Docker
+- SQL server
 
-## How to get started
+## How to get started Backend Web App(Local)
+
+### How to setup Azure AD B2C for authorization (optional)
+ - WORK IN PROGRESS (still writing the document, but theres already good explanation in other projects like [this](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/master/4-WebApp-your-API/4-2-B2C/README.md))
 
 ### Get the code and environment
 
-1. [Fork the repository](https://github.com/yizhe1997/SleekFlowTodoListApp.git) so you can have your own copy of it. 
+1. [Fork the repository](https://github.com/yizhe1997/SleekFlowTodoListApp.git) so you can have your own copy of it. And load the solution in Visual Studio 2022, download the necessary SDKs if prompted.
 
 ### Configuration for the Backend Web App
 
 ![image](https://user-images.githubusercontent.com/81303202/215346110-c5c904d8-4c60-4a22-aa28-7c1696b17d66.png)
 
-1. Ensure your connection strings in `appsettings.json` point to a local SQL Server instance. add in `appsettings.json`
+1. If hosting locally user can choose to fill in the appsettings.json or use the user secrets by left clicking the SleekFlowTodoListCore.csproj and select "Manage User Secrets".
+2. Create a new SQL Server instance for your local environment.
+3. Go through the [README.md](https://github.com/yizhe1997/SleekFlowTodoListApp/blob/master/SleekFlowTodoListAPI/README.md) to understand the purpose of each configuration options. There are empty templates in the README.md readily available for use.
+4.Run the application.
+
+    The first time you run the application, it will seed both databases with data such that you should see products in the store, and you should be able to log in using the demouser@microsoft.com account.
+    
+## How to host on Azure
+ - WORK IN PROGRESS
+
+## List of pending tasks:
+ -  Swagger documentation not enough documentation (description, example inputs, etc.)
+ -  Hosting on Azure (setup Azure AD B2C, SQL Server, Containers, etc.) so that users can try it out online
+ -  Frontend Blazor WebAssembly still no working example yet
+ -  In depth documentation of code
+ -  Unit testing
+ -  Technical design review
+
