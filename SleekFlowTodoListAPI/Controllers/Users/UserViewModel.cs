@@ -2,7 +2,7 @@
 
 namespace SleekFlowTodoListAPI.Controllers.Users
 {
-	public class UserViewModel : AuditableViewModel
+	public class UserViewModel : BaseViewModel
 	{
 		public string? DisplayName { get; set; }
 		public string? Email { get; set; }
