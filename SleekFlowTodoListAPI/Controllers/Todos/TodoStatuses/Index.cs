@@ -44,10 +44,10 @@ namespace SleekFlowTodoListAPI.Controllers.Todos.TodoStatuses
                 }
 
                 // Change default request.orderBy to any Model field as EnumableViewModel does not have nameof(BaseViewModel.Id)
-                if (request.OrderBy == nameof(BaseViewModel.Id))
+                if (string.IsNullOrEmpty(request.OrderBy))
                     request.OrderBy = nameof(Model.Code);
 
-                todoStatusViewModelList = todoStatusViewModelList.AsQueryable().OrderBy(request.OrderBy).ToList();
+				todoStatusViewModelList = todoStatusViewModelList.AsQueryable().OrderBy(request.OrderBy).ToList();
 
                 // Pagination 
                 var items = todoStatusViewModelList.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize).ToList();
