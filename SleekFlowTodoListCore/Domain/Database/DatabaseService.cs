@@ -46,7 +46,7 @@ namespace SleekFlowTodoListCore.Domain.Database
                     admin = new User
                     {
                         Email = _options.AdminEmail,
-                        UserName = "admin",
+                        DisplayName = "admin",
                         EmailConfirmed = true,
                         Admin = true
                     };

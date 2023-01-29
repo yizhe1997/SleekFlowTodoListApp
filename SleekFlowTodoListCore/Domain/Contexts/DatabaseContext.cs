@@ -114,7 +114,7 @@ namespace SleekFlowTodoListCore.Domain.Contexts
 
             Guid currentUserId = string.IsNullOrEmpty(nameClaim) ? Guid.Empty : Guid.Parse(nameClaim);
             User? currentUser = Users?.FirstOrDefault(u => u.Id == currentUserId) ?? null;
-            var identityName = currentUser?.UserName ?? "Anonymous";
+            var identityName = currentUser?.DisplayName ?? "Anonymous";
 
             // Track change and create timestamps
             foreach (var entityEntry in entries)

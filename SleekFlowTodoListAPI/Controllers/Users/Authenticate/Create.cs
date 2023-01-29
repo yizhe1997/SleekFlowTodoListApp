@@ -47,7 +47,7 @@ namespace SleekFlowTodoListAPI.Controllers.Users.Authenticate
             public override async Task<Model> Handle(Request request, CancellationToken cancellationToken)
             {
                 // Default error msg
-                var errorMsg = "Incorrect username & password combination.";
+                var errorMsg = "Incorrect email and password combination.";
 
                 // Attempt to authenticate email and pass
                 var result = await SignInManager.PasswordSignInAsync(request.Email, request.Password, false, false);

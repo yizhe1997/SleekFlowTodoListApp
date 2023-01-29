@@ -1,6 +1,6 @@
 ﻿namespace SleekFlowTodoListAPI.Controllers.ViewModel
 {
-    public class EnumableViewModel : AuditableViewModel
+    public class EnumableViewModel
     {
         public int Code { get; set; }
         public string? Name { get; set; }

@@ -12,7 +12,7 @@ using SleekFlowTodoListCore.Domain.Contexts;
 namespace SleekFlowTodoListCore.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20230128155849_initialMigration")]
+    [Migration("20230129032418_initialMigration")]
     partial class initialMigration
     {
         /// <inheritdoc />
@@ -222,6 +222,10 @@ namespace SleekFlowTodoListCore.Migrations
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("DisplayName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Email")

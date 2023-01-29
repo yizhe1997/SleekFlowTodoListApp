@@ -20,6 +20,10 @@ namespace SleekFlowTodoListCore.Domain.Database.Users
     /// </summary>
     public class User : IdentityUser<Guid>
     {
+        [Required]
+        public string? DisplayName { get; set; }
+        // Ref: https://stackoverflow.com/questions/26430094/asp-net-identity-provider-signinmanager-keeps-returning-failure
+        public override string? UserName { get { return Email; } set { Email = value; } }
         public bool Admin { get; set; } = false;
         public Guid AzureAdB2CTokenSubClaim { get; set; }
         public DateTime? LastLoggedIn { get; set; }

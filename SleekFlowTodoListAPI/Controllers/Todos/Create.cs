@@ -36,6 +36,9 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
                 // Map request
                 var todo = Mapper.Map<Request, Todo>(request);
 
+                // Assign todo to current user
+                todo.UserId = CurrentContext.CurrentUserId;
+
                 // Add todo to db and save
                 Database.Todos.Add(todo);
                 await Database.SaveChangesAsync();

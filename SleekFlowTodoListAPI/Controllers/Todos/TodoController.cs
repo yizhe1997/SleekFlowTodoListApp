@@ -22,11 +22,11 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateTodo([FromBody] Create.Request request, [FromRoute] ApiVersion apiVersion)
+        public async Task<IActionResult> CreateTodo([FromBody] Create.Request request)
         {
             var todoDetail = await _mediator.Send(request);
 
-            return CreatedAtAction(nameof(GetTodo), new { id = todoDetail.Id, version = apiVersion.ToString() }, todoDetail);
+            return CreatedAtAction(nameof(GetTodo), new { id = todoDetail.Id }, todoDetail);
         }
 
         [HttpPut("{id}")]
