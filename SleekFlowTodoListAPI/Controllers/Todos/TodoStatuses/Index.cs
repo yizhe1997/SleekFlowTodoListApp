@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using SleekFlowTodoListAPI.Controllers.Pagination;
+using SleekFlowTodoListAPI.Controllers.ViewModel;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr;
 using SleekFlowTodoListCore.Domain.Contexts;
 using SleekFlowTodoListCore.Domain.Database.Todos;
@@ -42,12 +43,18 @@ namespace SleekFlowTodoListAPI.Controllers.Todos.TodoStatuses
                     todoStatusViewModelList = uniqueList.ToList();
                 }
 
+                // Change default request.orderBy to any Model field as EnumableViewModel does not have nameof(BaseViewModel.Id)
+                if (request.OrderBy == nameof(BaseViewModel.Id))
+                    request.OrderBy = nameof(Model.Code);
+
                 todoStatusViewModelList = todoStatusViewModelList.AsQueryable().OrderBy(request.OrderBy).ToList();
 
                 // Pagination 
                 var items = todoStatusViewModelList.Skip((request.PageNumber - 1) * request.PageSize).Take(request.PageSize).ToList();
 
                 var r = new PaginatedList<Model>(items, todoStatusViewModelList.Count, request.PageNumber, request.PageSize);
+                response.SearchString = request.SearchString;
+                response.OrderBy = request.OrderBy;
                 response.Results = r.Results;
                 response.PageNumber = r.PageNumber;
                 response.PageSize = r.PageSize;

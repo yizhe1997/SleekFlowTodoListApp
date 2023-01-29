@@ -9,7 +9,7 @@ namespace SleekFlowTodoListCore.Domain.Database.Todos
         public string? Name { get; set; }
         public string? Description { get; set; }
         public DateTime? DueDate { get; set; }
-        public int Status { get; set; }
+        public int Status { get; set; } = (int)TodoStatusEnum.New;
 
         public User? User { get; set; }
         [Required]

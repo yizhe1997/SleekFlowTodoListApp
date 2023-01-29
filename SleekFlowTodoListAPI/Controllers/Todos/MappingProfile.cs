@@ -8,8 +8,9 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
         public MappingProfile()
         {
             // Index
-            CreateMap<Todo, Index.Model>()
+            CreateMap<Todo, TodoQueryableViewModel>()
                 .ForMember(c => c.Status, opt => opt.MapFrom(src => ((TodoStatusEnum)src.Status).ToString()));
+            CreateMap<TodoQueryableViewModel, Index.Model>();
 
             // Details
             CreateMap<Todo, Details.Model>()

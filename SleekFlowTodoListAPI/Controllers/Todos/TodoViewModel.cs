@@ -7,7 +7,11 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
         public string? Name { get; set; }
         public string? Description { get; set; }
         public DateTime? DueDate { get; set; }
-        public int Status { get; set; }
+        public string? Status { get; set; }
         public Guid UserId { get; set; }
+    }
+
+    public class TodoQueryableViewModel : TodoViewModel
+    {
     }
 }

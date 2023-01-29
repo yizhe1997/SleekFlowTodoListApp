@@ -1,4 +1,6 @@
-﻿namespace SleekFlowTodoListCore.Extensions
+﻿using SleekFlowTodoListCore.Domain.Database.Todos;
+
+namespace SleekFlowTodoListCore.Extensions
 {
     public static class TypeExtension
     {
@@ -18,7 +20,14 @@
         // Ref: https://stackoverflow.com/questions/5583717/enum-to-dictionaryint-string-in-c-sharp
         public static Dictionary<int, string> GetEnumDataTypeDict<T>()
         {
-            return Enum.GetValues(typeof(T)).Cast<int>().ToDictionary(t => (int)t, t => t.ToString());
+            var paylood = new Dictionary<int, string>();
+
+            foreach (var foo in Enum.GetValues(typeof(T)))
+            {
+                paylood.Add((int)foo, foo.ToString());
+            }
+
+            return paylood;
         }
     }
 }

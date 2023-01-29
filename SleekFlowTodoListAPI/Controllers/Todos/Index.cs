@@ -21,11 +21,15 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
             }
             public override async Task<SearchResponse<Model>> Handle(Request request, CancellationToken cancellationToken)
             {
-                return await CreateIndexResponseAsync<Todo, Model>(
+                // Convert Todo statuses to string format
+                var query = Mapper.Map<List<TodoQueryableViewModel>>(CurrentContext.Todos).ToList().AsQueryable();
+
+                return CreateIndexResponse<TodoQueryableViewModel, Model>(
                     request,
-                    CurrentContext.Todos,
+                    query,
                     x => x.Name.Contains(request.SearchString) ||
-                    ((TodoStatusEnum)x.Status).ToString().Contains(request.SearchString));
+                    x.Description.Contains(request.SearchString) ||
+                    x.Status.Contains(request.SearchString));
             }
         }
     }

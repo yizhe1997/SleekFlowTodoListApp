@@ -24,7 +24,7 @@ namespace SleekFlowTodoListAPI.Controllers.Todos
             {
                 var todoStatusNames = TypeExtension.GetEnumDataTypeValues<TodoStatusEnum>();
                 RuleFor(x => x.Name).NotNull().NotEmpty();
-                RuleFor(x => x.Status).NotEmpty().GreaterThanOrEqualTo(todoStatusNames.Max()).LessThanOrEqualTo(todoStatusNames.Min());
+                RuleFor(x => x.Status).NotEmpty().GreaterThan(todoStatusNames.Min()).LessThanOrEqualTo(todoStatusNames.Max());
             }
         }
         public class Model : TodoViewModel
