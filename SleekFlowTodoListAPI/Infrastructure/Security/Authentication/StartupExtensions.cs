@@ -15,11 +15,7 @@ namespace SleekFlowTodoListAPI.Infrastructure.Security.Authentication
     {
         public static void AddAuthentications(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<User, IdentityRole<Guid>>()
-                .AddEntityFrameworkStores<DatabaseContext>()
-                .AddDefaultTokenProviders();
-
-            var jwtOptions = configuration.GetSection("Jwt").Get<JwtIssuerOptions>();
+            var jwtOptions = configuration.GetSection("Jwt").Get<JwtOptions>();
             var azureAdB2CApiOptions = configuration.GetSection("AzureAdB2CApi").Get<AzureAdB2CApiOptions>() ?? new();
 
             // Jwt Bearer

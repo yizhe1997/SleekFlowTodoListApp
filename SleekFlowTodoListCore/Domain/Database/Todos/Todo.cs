@@ -15,4 +15,14 @@ namespace SleekFlowTodoListCore.Domain.Database.Todos
         [Required]
         public Guid UserId { get; set; }
     }
+
+    [Flags]
+    public enum TodoStatusEnum
+    {
+        None = 0,
+        New = 1,
+        WIP = 2,
+        Completed = 3,
+        Cancelled = 4
+    }
 }

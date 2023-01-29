@@ -14,5 +14,11 @@
         {
             return Enum.GetNames(typeof(T)).ToList();
         }
+
+        // Ref: https://stackoverflow.com/questions/5583717/enum-to-dictionaryint-string-in-c-sharp
+        public static Dictionary<int, string> GetEnumDataTypeDict<T>()
+        {
+            return Enum.GetValues(typeof(T)).Cast<int>().ToDictionary(t => (int)t, t => t.ToString());
+        }
     }
 }

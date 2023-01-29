@@ -1,6 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using SleekFlowTodoListAPI.Controllers.Pagination;
 using SleekFlowTodoListCore.Domain.Contexts;
+using System.Linq.Dynamic.Core;
 
 namespace SleekFlowTodoListAPI.Infrastructure.Mediatr
 {

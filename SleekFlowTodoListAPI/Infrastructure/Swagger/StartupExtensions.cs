@@ -120,12 +120,6 @@ namespace SleekFlowTodoListAPI.Infrastructure.Swagger
             app.UseSwagger(opts =>
             {
                 opts.RouteTemplate = "docs/{documentName}/docs.json";
-                //opts.PreSerializeFilters.Add((swaggerDoc, httpReq) =>
-                //{
-                //    swaggerDoc.Host = httpReq.Host.Value;
-                //    swaggerDoc.Schemes = new List<string>() { httpReq.Scheme };
-                //    swaggerDoc.BasePath = httpReq.PathBase;
-                //});
             });
 
             app.UseSwaggerUI(opts =>

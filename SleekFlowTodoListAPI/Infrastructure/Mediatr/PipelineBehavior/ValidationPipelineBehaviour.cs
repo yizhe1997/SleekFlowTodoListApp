@@ -1,7 +1,11 @@
 ﻿using FluentValidation;
+using MediatR;
 
 namespace SleekFlowTodoListAPI.Infrastructure.Mediatr.PipelineBehavior
 {
+    /// <summary>
+    ///     Handles the transaction behaviour for the request pipeline
+    /// </summary>
     public class ValidationPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {
         private readonly List<IValidator<TRequest>> _validators;

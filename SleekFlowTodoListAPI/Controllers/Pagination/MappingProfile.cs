@@ -1,4 +1,6 @@
-﻿namespace SleekFlowTodoListAPI.Controllers.Pagination
+﻿using AutoMapper;
+
+namespace SleekFlowTodoListAPI.Controllers.Pagination
 {
     public class MappingProfile : Profile
     {

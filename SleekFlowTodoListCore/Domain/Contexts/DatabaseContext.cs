@@ -34,7 +34,6 @@ namespace SleekFlowTodoListCore.Domain.Contexts
         #region Todo
 
         public DbSet<Todo> Todos { get; set; }
-        public DbSet<TodoStatus> TodoStatuses { get; set; }
 
         #endregion
 
@@ -78,14 +77,6 @@ namespace SleekFlowTodoListCore.Domain.Contexts
                 .HasOne(bc => bc.User)
                 .WithMany(b => b.Todos)
                 .HasForeignKey(bc => bc.UserId);
-
-            #endregion
-
-            #region TodoStatus
-
-            builder.Entity<TodoStatus>()
-                .HasIndex(bc => new { bc.Name })
-                .IsUnique();
 
             #endregion
         }

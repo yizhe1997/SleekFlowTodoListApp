@@ -3,7 +3,7 @@ using System.Text;
 
 namespace SleekFlowTodoListAPI.Infrastructure.Security.Jwt
 {
-    public class JwtIssuerOptions
+    public class JwtOptions
     {
         public const string Schemes = "Bearer";
 

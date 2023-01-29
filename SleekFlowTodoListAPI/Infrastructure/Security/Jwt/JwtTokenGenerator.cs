@@ -6,9 +6,9 @@ namespace SleekFlowTodoListAPI.Infrastructure.Security.Jwt
 {
     public class JwtTokenGenerator
     {
-        private readonly JwtIssuerOptions _jwtOptions;
+        private readonly JwtOptions _jwtOptions;
 
-        public JwtTokenGenerator(IOptions<JwtIssuerOptions> jwtOptions)
+        public JwtTokenGenerator(IOptions<JwtOptions> jwtOptions)
         {
             _jwtOptions = jwtOptions.Value;
         }

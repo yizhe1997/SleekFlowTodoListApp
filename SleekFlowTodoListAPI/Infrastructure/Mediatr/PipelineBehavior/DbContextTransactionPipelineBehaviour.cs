@@ -1,9 +1,10 @@
-﻿using SleekFlowTodoListCore.Domain.Contexts;
+﻿using MediatR;
+using SleekFlowTodoListCore.Domain.Contexts;
 
 namespace SleekFlowTodoListAPI.Infrastructure.Mediatr.PipelineBehavior
 {
     /// <summary>
-    ///     Adds transaction to the processing pipeline
+    ///     Handles the transaction behaviour for the DatabaseContext
     /// </summary>
     public class DbContextTransactionPipelineBehaviour<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : IRequest<TResponse>
     {

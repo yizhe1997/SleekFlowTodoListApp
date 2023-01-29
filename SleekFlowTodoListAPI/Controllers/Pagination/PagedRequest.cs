@@ -1,4 +1,6 @@
-﻿namespace SleekFlowTodoListAPI.Controllers.Pagination
+﻿using MediatR;
+
+namespace SleekFlowTodoListAPI.Controllers.Pagination
 {
     public class PagedRequest<T> : IPaginationParams, IRequest<T>
     {

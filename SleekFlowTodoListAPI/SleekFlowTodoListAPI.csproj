@@ -38,13 +38,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Users\Authenticate\" />
-    <Folder Include="Controllers\Users\Authorize\" />
-    <Folder Include="Controllers\Users\AuthorizeAzureAdB2C\" />
-    <Folder Include="Infrastructure\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\SleekFlowTodoListCore\SleekFlowTodoListCore.csproj" />
   </ItemGroup>
 

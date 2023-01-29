@@ -24,12 +24,11 @@ namespace SleekFlowTodoListCore.Domain.Contexts
         public Guid CurrentUserId => string.IsNullOrEmpty(NameClaim) ? Guid.Empty : Guid.Parse(NameClaim);
         public User? CurrentUser => _dbContext.Users.FirstOrDefault(u => u.Id == CurrentUserId);
 
+        #region Todos
+
+        public IQueryable<Todo> Todos => _dbContext.Todos.Where(m => m.UserId == CurrentUserId);
+
         #endregion
-
-        #region Current Dealer Context
-
-        public Guid CurrentDealerId => Claims != null ? Guid.TryParse(Claims.FirstOrDefault(x => x.Type == "dealerId")?.Value, out Guid result) ? result : Guid.Empty : Guid.Empty;
-        public IQueryable<Todo> CurrentDealerMemberships => _dbContext.Todos.Where(m => m.UserId == CurrentDealerId);
 
         #endregion
     }

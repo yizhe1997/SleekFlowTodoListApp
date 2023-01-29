@@ -81,24 +81,5 @@ namespace SleekFlowTodoListCore.Domain.Database
         }
 
         #endregion
-
-        #region Create, update and delete entities via enum values
-
-        public void EnumValues()
-        {
-            var todoStatuses = TypeExtension.GetEnumDataTypeValues<TodoStatusNames>();
-
-            foreach (var type in todoStatuses)
-            {
-                if (!_dbContext.TodoStatuses.Where(x => type == x.Name).Any())
-                {
-                    _dbContext.Add(new TodoStatus() { Name = type });
-                }
-            }
-
-            _dbContext.SaveChanges();
-        }
-
-        #endregion
     }
 }
