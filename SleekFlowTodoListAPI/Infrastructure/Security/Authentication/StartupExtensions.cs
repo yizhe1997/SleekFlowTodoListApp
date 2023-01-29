@@ -1,17 +1,14 @@
-﻿using Microsoft.AspNetCore.Identity;
-using Microsoft.IdentityModel.Tokens;
+﻿using Microsoft.IdentityModel.Tokens;
 using Microsoft.Net.Http.Headers;
 using System.IdentityModel.Tokens.Jwt;
 using SleekFlowTodoListAPI.Infrastructure.Security.Jwt;
 using SleekFlowTodoListAPI.Infrastructure.Security.AzureAdB2C;
-using SleekFlowTodoListCore.Domain.Database.Users;
-using SleekFlowTodoListCore.Domain.Contexts;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Identity.Web;
 
 namespace SleekFlowTodoListAPI.Infrastructure.Security.Authentication
 {
-    public static class StartupExtensions
+	public static class StartupExtensions
     {
         public static void AddAuthentications(this IServiceCollection services, IConfiguration configuration)
         {

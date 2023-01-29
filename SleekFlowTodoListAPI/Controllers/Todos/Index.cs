@@ -2,11 +2,10 @@
 using SleekFlowTodoListAPI.Controllers.Pagination;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr;
 using SleekFlowTodoListCore.Domain.Contexts;
-using SleekFlowTodoListCore.Domain.Database.Todos;
 
 namespace SleekFlowTodoListAPI.Controllers.Todos
 {
-    public class Index
+	public class Index
     {
         public class Request : SearchRequest<SearchResponse<Model>>
         {

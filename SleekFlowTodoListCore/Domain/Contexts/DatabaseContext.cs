@@ -25,12 +25,6 @@ namespace SleekFlowTodoListCore.Domain.Contexts
 
         #region Data Sets
 
-        //#region Users
-
-        //public DbSet<UserPasswordReset> UserPasswordResets { get; set; }
-
-        //#endregion
-
         #region Todo
 
         public DbSet<Todo> Todos { get; set; }
@@ -62,15 +56,6 @@ namespace SleekFlowTodoListCore.Domain.Contexts
 
         private void DefineDomainModels(ModelBuilder builder)
         {
-            //#region Users
-
-            //builder.Entity<UserPasswordReset>()
-            //    .HasOne(bc => bc.User)
-            //    .WithMany(b => b.UserPasswordResets)
-            //    .HasForeignKey(bc => bc.User.Id);
-
-            //#endregion
-
             #region Todos
 
             builder.Entity<Todo>()

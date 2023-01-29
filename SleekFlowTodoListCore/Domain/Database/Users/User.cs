@@ -27,7 +27,6 @@ namespace SleekFlowTodoListCore.Domain.Database.Users
         public bool Admin { get; set; } = false;
         public Guid AzureAdB2CTokenSubClaim { get; set; }
         public DateTime? LastLoggedIn { get; set; }
-        //public List<UserPasswordReset> UserPasswordResets { get; set; } = new List<UserPasswordReset>();
         public List<Todo> Todos { get; set; } = new List<Todo>();
     }
 }

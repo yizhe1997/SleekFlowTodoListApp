@@ -3,7 +3,6 @@ using FluentValidation;
 using SleekFlowTodoListCore.Domain.Database;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using SleekFlowTodoListCore.Domain.Contexts;
 using Microsoft.AspNetCore.Identity;
 using SleekFlowTodoListAPI.Infrastructure.Mediatr.PipelineBehavior;
@@ -68,7 +67,7 @@ builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies().Where(ass
 builder.Services.AddEFCore(configuration);
 
 // Prereq for Iidentity... and to use usermanager
-builder.Services.AddIdentity<User, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddIdentity<User, IdentityRole<Guid>>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddDefaultTokenProviders();
 

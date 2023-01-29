@@ -16,7 +16,7 @@ builder.Services.AddEFCore(configuration);
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 // Add identity services, e.g. UI
-builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = false)
+builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddDefaultTokenProviders();
 

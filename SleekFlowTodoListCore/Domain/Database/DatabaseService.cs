@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using SleekFlowTodoListCore.Domain.Contexts;
 using SleekFlowTodoListCore.Domain.Database.Users;
+using System.Net;
 using System.Web.Helpers;
 
 namespace SleekFlowTodoListCore.Domain.Database
@@ -27,6 +28,9 @@ namespace SleekFlowTodoListCore.Domain.Database
 
         #region Create and update admin user on startup
 
+        /// <summary>
+        ///     Seed user admin using Database configs and updates the admin uer if changes made to its config or details.
+        /// </summary>
         public void UserAdmin()
         {
             // Check option for seeding admin
@@ -38,8 +42,8 @@ namespace SleekFlowTodoListCore.Domain.Database
             if (admin == null)
             {
                 // Check if theres pre-existing admin user, create new if no and overwrite if yes
-                var AdminCheck = _userManager.Users.Where(x => x.Admin == true).FirstOrDefault();
-                if (AdminCheck == null)
+                var adminCheck = _userManager.Users.Where(x => x.Admin == true).FirstOrDefault();
+                if (adminCheck == null)
                 {
                     admin = new User
                     {
@@ -62,9 +66,9 @@ namespace SleekFlowTodoListCore.Domain.Database
                 }
                 else
                 {
-                    AdminCheck.Email = _options.AdminEmail;
-                    AdminCheck.PasswordHash = Crypto.HashPassword(_options.AdminPassword);
-                    var result = _userManager.UpdateAsync(AdminCheck).Result;
+                    adminCheck.Email = _options.AdminEmail;
+                    adminCheck.PasswordHash = Crypto.HashPassword(_options.AdminPassword);
+                    var result = _userManager.UpdateAsync(adminCheck).Result;
 
                     if (result.Succeeded)
                     {
@@ -78,6 +82,29 @@ namespace SleekFlowTodoListCore.Domain.Database
             }
         }
 
-        #endregion
-    }
+        /// <summary>
+        ///     Seed data for new DBs. No updates after one time seeding.
+        /// </summary>
+		public void SeedData()
+		{
+			if (_dbContext.Users.Count() == 0)
+			{
+				var users = new List<User>()
+				{
+					new User()
+					{
+						Email = "string@domain.com",
+						DisplayName = "DummyUser",
+						EmailConfirmed = true,
+						Admin = false
+					}
+				};
+				_dbContext.Users.AddRange(users);
+			}
+
+			_dbContext.SaveChanges();
+		}
+
+		#endregion
+	}
 }

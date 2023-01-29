@@ -22,9 +22,11 @@ namespace SleekFlowTodoListCore.Domain.Database
             var dbContext = provider.GetRequiredService<DatabaseContext>();
             dbContext.Database.Migrate();
 
-            // Applied before migration so that DatabaseService transaction can take place for new/existing DB
+            // Applied before migration so that DatabaseService transaction can take place for new/existing DB.
+            // Make sure to arrange the database service sequentially as chronology affects the functionality
             var service = provider.GetRequiredService<DatabaseService>();
-            service.UserAdmin();
+			service.SeedData();
+			service.UserAdmin();
         }
     }
 }
