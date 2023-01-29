@@ -1,0 +1,921 @@
+{
+	"info": {
+		"_postman_id": "27adc06f-879a-4f09-a3bc-e6a221365058",
+		"name": "SleekFlowTodoListAPICollection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17192527"
+	},
+	"item": [
+		{
+			"name": "Todos",
+			"item": [
+				{
+					"name": "Todo",
+					"item": [
+						{
+							"name": "Todo  List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Returns the list of TODO for the current user"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/Todo?SearchString=&OrderBy=id&PageNumber=1&PageSize=10&CreatedBy",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"Todo"
+									],
+									"query": [
+										{
+											"key": "SearchString",
+											"value": "",
+											"description": "Filter records based on their identifier values. Supported identifiers: \"name\", \"description\", \"status\""
+										},
+										{
+											"key": "OrderBy",
+											"value": "id",
+											"description": "Use identifier name followed by asc or desc for ordering. default order by is \"Id asc\""
+										},
+										{
+											"key": "PageNumber",
+											"value": "1",
+											"description": "Page number to query"
+										},
+										{
+											"key": "PageSize",
+											"value": "10",
+											"description": "Number of records to load for a page"
+										},
+										{
+											"key": "CreatedBy",
+											"value": null,
+											"description": "Search for records created by, e.g. \"admin\""
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todo Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Returns the detail of a TODO only from the user's TODO list. Replace arg {id} with any \"id\" fetched from /api/v1/Todo GET service"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/Todo/{id}",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"Todo",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todo Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorizeToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Creates a TODO record for the current authorized user\r\n{\r\n  \"name\": \"Climbing01\",\r\n  \"description\": \"Climb mount everest before year 3000\",\r\n  \"dueDate\": \"2088-01-29T15:11:24.829Z\"\r\n}"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/Todo",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"Todo"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todo Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorizeToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Updates the detail of a TODO only from the user's TODO list. Replace arg {id} with any \"id\" fetched from /api/v1/Todo GET service\r\n{\r\n  \"name\": \"Climb01Updated\",\r\n  \"description\": \"Maybe ill climb the mountain next year\",\r\n  \"dueDate\": \"2024-01-29T15:19:01.456Z\",\r\n  \"status\": 2\r\n}"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/Todo/{id}",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"Todo",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Todo Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorizeToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Deletes the detail of a TODO only from the user's TODO list. Replace arg {id} with any \"id\" fetched from /api/v1/Todo GET service"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/Todo/{id}",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"Todo",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{authorizeToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "Todo Statuses",
+					"item": [
+						{
+							"name": "Todo Status List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var jsonData = JSON.parse(responseBody);\r",
+											"var dealerId = jsonData.id;\r",
+											"postman.setEnvironmentVariable(\"dealerId\", dealerId);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Return the list of plausible TODO statuses!\r\n// The \"code\" value will be used as the int value of \"status\" for /api/v1/Todo/{id} PUT service."
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/TodoStatus?SearchString=&OrderBy=code&PageNumber=1&PageSize=10",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"TodoStatus"
+									],
+									"query": [
+										{
+											"key": "SearchString",
+											"value": "",
+											"description": "Filter records based on their identifier values. Supported identifiers: \"code\", \"name\""
+										},
+										{
+											"key": "OrderBy",
+											"value": "code",
+											"description": "Use identifier name followed by asc or desc for ordering. default order by is \"code asc\"."
+										},
+										{
+											"key": "PageNumber",
+											"value": "1",
+											"description": "Page number to query"
+										},
+										{
+											"key": "PageSize",
+											"value": "10",
+											"description": "Number of records to load for a page"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{authorizeToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				}
+			],
+			"auth": {
+				"type": "bearer",
+				"bearer": [
+					{
+						"key": "token",
+						"value": "{{authorizeToken}}",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User",
+					"item": [
+						{
+							"name": "User List",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Only admin is authorized to query for list of users!\r\n// The list does not return record for admin due to security concern."
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/User?SearchString=&OrderBy=id&PageNumber=1&PageSize=10",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"User"
+									],
+									"query": [
+										{
+											"key": "SearchString",
+											"value": "",
+											"description": "Filter records based on their identifier values. Supported identifiers: \"email\", \"displayName\""
+										},
+										{
+											"key": "OrderBy",
+											"value": "id",
+											"description": "Use identifier name followed by asc or desc for ordering. default order by is \"Id desc\". Empty string not allowed, uncheck if not used!"
+										},
+										{
+											"key": "PageNumber",
+											"value": "1",
+											"description": "Page number to query"
+										},
+										{
+											"key": "PageSize",
+											"value": "10",
+											"description": "Number of records to load for a page"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Details",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"protocolProfileBehavior": {
+								"disableBodyPruning": true
+							},
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Returns the detail of a user with the specified \"id\". Replace arg {id} with any \"id\" fetched from /api/v1/User GET service\r\n// Admin can view all users detail but non admin users can only view their own details"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/User/{id}",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"User",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Create",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorizeToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Creates a non-admin user with default password specified in the configuration of the API server\r\n{\r\n  \"displayName\": \"bob\",\r\n  \"email\": \"test@domain.com\"\r\n}\r\n\r\n/*\r\n{\r\n  \"azureAdB2CTokenSubClaim\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", // only needed for creating users via identity provier. defaults to Guid.empty if not specified in body\r\n  \"displayName\": \"string\",\r\n  \"email\": \"string\"\r\n}\r\n*/"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/User",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"User"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Update",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorizeToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Updates the detail of a given user with the specified \"id\". Replace arg {id} with any \"id\" fetched from /api/v1/User GET service\r\n{\r\n  \"displayName\": \"test0\",\r\n  \"email\": \"test0@domain.com\",\r\n  \"azureAdB2CTokenSubClaim\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\",\r\n  \"password\": \"!TEsTING123\"\r\n}\r\n\r\n/*\r\n{\r\n  \"displayName\": \"string\",\r\n  \"email\": \"string\",\r\n  \"azureAdB2CTokenSubClaim\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\", // only needed for users created via identity provier. defaults to Guid.empty if not specified in body\r\n  \"password\": \"string\"\r\n}\r\n*/"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/User/{id}",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"User",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "User Delete",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											""
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{authorizeToken}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"name": "Content-Type",
+										"type": "text",
+										"value": "application/json"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "// Deletes the user with the specified \"id\". Replace arg {id} with any \"id\" fetched from /api/v1/User GET service\r\n// Deleting admin user will throw an error!\r\n// Only admin is authorized to delete any users!"
+								},
+								"url": {
+									"raw": "{{apiEndpoint}}/{{apiVersion}}/User/{id}",
+									"host": [
+										"{{apiEndpoint}}"
+									],
+									"path": [
+										"{{apiVersion}}",
+										"User",
+										"{id}"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{authorizeToken}}",
+								"type": "string"
+							}
+						]
+					},
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					]
+				},
+				{
+					"name": "User Authenticate",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var token = jsonData.authToken;\r",
+									"postman.setEnvironmentVariable(\"authenticateToken\", token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Verifies the identity of a user in DB\n{\n\t\"email\": \"admin@SleekFlow.net\",\n\t\"password\": \"!SleekFlow123\"\n}\n\n/* Another seeded user in the database for trying out the TODO APIs\n{\n\t\"email\": \"string@domain.com\",\n\t\"password\": \"!Default123\"\n}\n*/"
+						},
+						"url": {
+							"raw": "{{apiEndpoint}}/{{apiVersion}}/Authenticate",
+							"host": [
+								"{{apiEndpoint}}"
+							],
+							"path": [
+								"{{apiVersion}}",
+								"Authenticate"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Authorize",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var token = jsonData.authToken;\r",
+									"postman.setEnvironmentVariable(\"authorizeToken\", token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Determines user access rights, currently only scope to check is \"admin\" rights\n{}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiEndpoint}}/{{apiVersion}}/Authorize",
+							"host": [
+								"{{apiEndpoint}}"
+							],
+							"path": [
+								"{{apiVersion}}",
+								"Authorize"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "User Authorize Azure AD B2C",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);\r",
+									"var token = jsonData.authToken;\r",
+									"postman.setEnvironmentVariable(\"authorizeToken\", token);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "apikey",
+							"apikey": [
+								{
+									"key": "value",
+									"value": "Bearer {{azureAdB2CAuthenticateToken}}",
+									"type": "string"
+								},
+								{
+									"key": "key",
+									"value": "Authorization",
+									"type": "string"
+								},
+								{
+									"key": "in",
+									"value": "header",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "// Determines user access rights, currently only scope to check is \"admin\" rights. \r\n// Produces the same token as /api/v1/Authorize POST service but requires azureAdB2CAuthenticateToken generated by\r\n// Azure AD B2C identity provider.\r\n{\r\n  \"azureAdB2CTokenSubClaim\": \"3fa85f64-5717-4562-b3fc-2c963f66afa6\"\r\n}\r\n\r\n// Insufficient time to setup azure ad b2c directory on my azure account. can work on it if have time\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{apiEndpoint}}/{{apiVersion}}/AuthorizeAzureAdB2C",
+							"host": [
+								"{{apiEndpoint}}"
+							],
+							"path": [
+								"{{apiVersion}}",
+								"AuthorizeAzureAdB2C"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{authenticateToken}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
