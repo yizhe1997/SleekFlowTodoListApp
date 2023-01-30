@@ -50,7 +50,8 @@ For local developer environment
  - WORK IN PROGRESS
 
 ## List of pending tasks:
- -  Swagger documentation not enough documentation (description, example inputs, etc.)
+ -  Swagger documentation not enough documentation (description, example inputs, etc.) 
+     - UPDATE ON 30/1/2023 : Added remarks and status code descriptions
  -  Hosting on Azure (setup Azure AD B2C, SQL Server, Containers, etc.) so that users can try it out online
  -  Frontend Blazor WebAssembly still no working example yet
  -  In depth documentation of code
