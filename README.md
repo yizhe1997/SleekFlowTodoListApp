@@ -11,11 +11,11 @@ Create a simple TODO List web application that allows user to manage their TODOs
 
 For hosting on Azure
 - Azure account
+- Docker
 
 For local developer environment
 
 - Visual Studio 2022 and the necessary .Net SDKs
-- Docker
 - SQL server
 - Postman
 
