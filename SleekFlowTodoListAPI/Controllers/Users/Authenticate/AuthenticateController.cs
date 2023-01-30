@@ -11,7 +11,12 @@ namespace SleekFlowTodoListAPI.Controllers.Users.Authenticate
         {
         }
 
-        [AllowAnonymous]
+		/// <remarks>
+		///     Verifies the identity of a user in DB
+		/// </remarks>
+		/// <response code="200">User authenticated</response>
+		[ProducesResponseType(StatusCodes.Status200OK)]
+		[AllowAnonymous]
         [HttpPost]
         public async Task<ActionResult<Create.Model>> PostAuthenticate([FromBody] Create.Request request) =>
             await _mediator.Send(request);

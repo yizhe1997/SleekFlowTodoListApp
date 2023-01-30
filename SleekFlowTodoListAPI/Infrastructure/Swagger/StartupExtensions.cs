@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
+using Microsoft.Extensions.Options;
 using Microsoft.Identity.Web;
 using Microsoft.OpenApi.Models;
 using SleekFlowTodoListAPI.Infrastructure.Security.AzureAdB2C;
@@ -27,12 +28,13 @@ namespace SleekFlowTodoListAPI.Infrastructure.Swagger
                     opts.SwaggerDoc(description.GroupName, new OpenApiInfo
                     {
                         Title = $"SleekFlowTodoList API {description.ApiVersion}",
-                        Version = description.ApiVersion.ToString()
+						Description = "An ASP.NET Core Web API for managing users TODO items",
+						Version = description.ApiVersion.ToString()
                     });
                     opts.DocInclusionPredicate((version, apiDescription) => true);
                 }
 
-                #region AddSecurityDefinition
+                #region Add Security Definition
 
                 opts.AddSecurityDefinition(JwtBearerDefaults.AuthenticationScheme, new OpenApiSecurityScheme
                 {
@@ -67,9 +69,10 @@ namespace SleekFlowTodoListAPI.Infrastructure.Swagger
                     }
                 });
 
-                #endregion
+				#endregion
 
-                var openApiSecurityRequirement = new OpenApiSecurityRequirement()
+				#region Add Security Requirements
+				var openApiSecurityRequirement = new OpenApiSecurityRequirement()
                 {
                     {
                         new OpenApiSecurityScheme {
@@ -101,14 +104,21 @@ namespace SleekFlowTodoListAPI.Infrastructure.Swagger
 
                 opts.AddSecurityRequirement(openApiSecurityRequirement);
 
-                opts.CustomSchemaIds(s => s.FullName?.Replace("+", "."));
+				#endregion
+
+				opts.CustomSchemaIds(s => s.FullName?.Replace("+", "."));
                 opts.ResolveConflictingActions(apiDescriptions => apiDescriptions.First());
                 opts.DescribeAllParametersInCamelCase();
 
                 opts.OperationFilter<SecurityRequirementsOperationFilter>(configuration);
-                //opts.AddFluentValidationRules();
-                //opts.IncludeXmlComments(xmlPath);
-            });
+
+				#region Swagger XML documentation file
+				// Ref: https://learn.microsoft.com/en-us/aspnet/core/tutorials/getting-started-with-swashbuckle?view=aspnetcore-7.0&tabs=visual-studio
+				var xmlFilename = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
+				opts.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, xmlFilename));
+
+				#endregion
+			});
 
             return services;
         }
