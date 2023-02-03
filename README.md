@@ -32,7 +32,7 @@ For local developer environment
 1. If hosting locally user can choose to fill in the appsettings.json or use the user secrets by left clicking the SleekFlowTodoListCore.csproj and select "Manage User Secrets".
 ![image](https://user-images.githubusercontent.com/81303202/215346110-c5c904d8-4c60-4a22-aa28-7c1696b17d66.png)
 2. Create a new SQL Server instance for your local environment.
-3. Go through the [README.md](https://github.com/yizhe1997/SleekFlowTodoListApp/blob/master/SleekFlowTodoListAPI/README.md) to understand the purpose of each configuration options. There are empty templates in the README.md readily available for use.
+3. Go through the [README.md](https://github.com/yizhe1997/SleekFlowTodoListApp/blob/master/SleekFlowTodoListAPI/README.md) to understand the purpose of each configuration options. There are empty templates in the [appsettings.json](https://github.com/yizhe1997/SleekFlowTodoListApp/blob/master/SleekFlowTodoListAPI/appsettings.json) readily available for use.
 4. Clean and Rebuild the project. 
 5. Select SleekFlowTodoListAPI as the startup project.
 ![image](https://user-images.githubusercontent.com/81303202/215347856-5f12d718-2f0b-42e5-a79e-d3a41fbbbb6b.png)
