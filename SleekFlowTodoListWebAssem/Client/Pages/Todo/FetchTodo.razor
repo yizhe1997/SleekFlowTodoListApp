@@ -1,0 +1,112 @@
+﻿@page "/fetchTodos"
+@using SleekFlowTodoListWebAssem.Client.Data.Models.Users;
+@using SleekFlowTodoListWebAssem.Client.Data.Models.Todos;
+@inject HttpClient Http
+@inject IJSRuntime jsr
+
+<UserComponent></UserComponent>
+
+<h1>Weather forecast</h1>
+
+<p>This component demonstrates fetching data from the server.</p>
+@if (string.IsNullOrEmpty(user.AuthToken))
+{
+	<p><a href="/login">LOGIN TO ACCESS THIS DATA</a></p>
+}
+else
+{
+	if (Todos == null)
+	{
+		<p><em>Loading...</em></p>
+	}
+	else
+	{
+		<p><a href="javascript:;" @onclick="GetTodaysForecast">TODAY'S FORECAST</a></p>
+		<table class="table">
+			<thead>
+				<tr>
+					<th>DueDate</th>
+					<th>Name</th>
+					<th>Description</th>
+					<th>Status</th>
+					<th>UserId</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var Todo in Todos)
+				{
+					<tr>
+						<td>@Todo.DueDate?.ToShortDateString()</td>
+						<td>@Todo.Name</td>
+						<td>@Todo.Description</td>
+						<td>@Todo.Status</td>
+						<td>@Todo.UserId</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	}
+}
+
+@code {
+
+	private List<Todo> Todos;
+	UserDetail user =  new UserDetail();
+
+	private async Task<string> GetJWT()
+	{
+		user.AuthToken = await jsr.InvokeAsync<string>("localStorage.getItem", "userAuthToken").ConfigureAwait(false);
+		return null;
+	}
+
+	private async Task GetTodaysForecast()
+	{
+		try
+		{
+			var requestMsg = new HttpRequestMessage(HttpMethod.Get, $"/api/weatherforecast/{DateTime.Now.ToString("yyyy-MM-dd")}");
+			requestMsg.Headers.Add("Authorization", "Bearer " + await GetJWT());
+			var response = await Http.SendAsync(requestMsg);
+			if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) // NOTE: THEN TOKEN HAS EXPIRED
+			{
+				await jsr.InvokeVoidAsync("localStorage.removeItem", "userAuthToken").ConfigureAwait(false);
+				user.AuthToken = null;
+			}
+			else if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+				Todos = null;
+			else if (response.IsSuccessStatusCode)
+			{
+				var forecast = await response.Content.ReadFromJsonAsync<Todo>();
+				Todos.Clear();
+				Todos.Add(forecast);
+			}
+		}
+		catch (Exception ex)
+		{
+
+		}
+	}
+
+	protected override async Task OnInitializedAsync()
+	{
+		await base.OnInitializedAsync();
+		try
+		{
+			var requestMsg = new HttpRequestMessage(HttpMethod.Get, "/api/weatherforecast");
+			requestMsg.Headers.Add("Authorization", "Bearer " + await GetJWT());
+			var response = await Http.SendAsync(requestMsg);
+			if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized) // NOTE: THEN TOKEN HAS EXPIRED
+			{
+				await jsr.InvokeVoidAsync("localStorage.removeItem", "userAuthToken").ConfigureAwait(false);
+				user.AuthToken = null;
+			}
+			else if (response.StatusCode == System.Net.HttpStatusCode.NoContent)
+				Todos = null;
+			else if (response.IsSuccessStatusCode)
+				Todos = await response.Content.ReadFromJsonAsync<List<Todo>>();
+		}
+		catch (Exception ex)
+		{
+
+		}
+	}
+}

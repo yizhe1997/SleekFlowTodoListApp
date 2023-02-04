@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListCore", "SleekFlowTodoListCore\SleekFlowTodoListCore.csproj", "{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SleekFlowTodoListCore", "SleekFlowTodoListCore\SleekFlowTodoListCore.csproj", "{89C7F2E5-4A0B-4131-B26A-A936BD17D45F}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SleekFlowTodoListAPI", "SleekFlowTodoListAPI\SleekFlowTodoListAPI.csproj", "{42E18D52-A126-451C-8639-6BF163948480}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListClient", "SleekFlowTodoListClient\SleekFlowTodoListClient.csproj", "{3F074565-F441-4606-81C8-07C2670F0315}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SleekFlowTodoListWebAssem.Client", "SleekFlowTodoListWebAssem\Client\SleekFlowTodoListWebAssem.Client.csproj", "{B64753BD-550B-459F-8049-3247AAE9F2A2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{42E18D52-A126-451C-8639-6BF163948480}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{42E18D52-A126-451C-8639-6BF163948480}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{42E18D52-A126-451C-8639-6BF163948480}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3F074565-F441-4606-81C8-07C2670F0315}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3F074565-F441-4606-81C8-07C2670F0315}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3F074565-F441-4606-81C8-07C2670F0315}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3F074565-F441-4606-81C8-07C2670F0315}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B64753BD-550B-459F-8049-3247AAE9F2A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B64753BD-550B-459F-8049-3247AAE9F2A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B64753BD-550B-459F-8049-3247AAE9F2A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B64753BD-550B-459F-8049-3247AAE9F2A2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
