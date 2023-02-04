@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'SleekFlowTodoListApp'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_738AEBB4A9A840EB9522506D126EEA5B }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_EDEA35B1AC3045C597CE87BD653F1A18 }}
           package: .
